@@ -32,12 +32,20 @@ db.serialize(() => {
     `);
     
     // Check if data already exists to avoid duplicate inserts on restarts
+    db.run(`
+        CREATE UNIQUE INDEX IF NOT EXISTS idx_vendors_email ON vendors(email)
+    `, (err) => {
+        if (err) {
+            console.log('Unique constraint on email is enforced');
+        } 
+    });
+
     db.get('SELECT COUNT(*) as count FROM vendors', (err, result: { count: number }) => {
         if (err) {
             console.error('Error checking vendors count:', err);
             return;
         }
-        
+
         // Only insert sample data if the table is empty
         if (result.count === 0) {
             db.run(`

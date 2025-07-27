@@ -81,3 +81,27 @@ For coverage report:
 ```
 npm run test:coverage
 ```
+
+## ✅ Completed Tasks
+
+1. **Delete Vendor**
+   - Added delete button with confirmation dialog.
+   - Backend DELETE API integrated with frontend.
+
+2. **Prevent Duplicate Vendor Submissions**
+   - Disabled the Add button during submission.
+   - Reset form after successful submission to avoid accidental duplicates.
+
+3. **Unique Email Validation**
+   - Backend enforces a unique constraint on email.
+
+## Questions
+
+### 1. What do I love most about being a software engineer?
+> I love building products that solve real problems and the thrill of seeing code come to life.
+
+### 2. What is most important to me when working in a team?
+> Clear communication, mutual support, and shared ownership of both success and challenges.
+
+### 3. What is the worst part of being a software engineer?
+> Debugging vague or environment-specific errors that consume time without clear root causes.

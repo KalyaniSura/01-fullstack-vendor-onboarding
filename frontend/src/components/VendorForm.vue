@@ -12,7 +12,7 @@
           placeholder="Company name"
         />
       </div>
-      
+
       <div class="form-group">
         <label for="contactPerson">Contact Person:</label>
         <input 
@@ -23,7 +23,7 @@
           placeholder="Contact person name"
         />
       </div>
-      
+
       <div class="form-group">
         <label for="email">Email:</label>
         <input 
@@ -34,7 +34,7 @@
           placeholder="contact@example.com"
         />
       </div>
-      
+
       <div class="form-group">
         <label for="partnerType">Partner Type:</label>
         <select 
@@ -46,7 +46,7 @@
           <option value="Partner">Partner</option>
         </select>
       </div>
-      
+
       <div class="form-actions">
         <button type="submit" :disabled="vendorStore.loading">
           {{ vendorStore.loading ? 'Submitting...' : 'Add Vendor' }}
@@ -83,11 +83,12 @@ const resetForm = () => {
 
 const submitForm = async () => {
   success.value = false;
-  
+  if (vendorStore.loading) return;
+
   try {
     await vendorStore.addVendor({ ...form });
     success.value = true;
-    
+   
     // Reset the form after successful submission
     setTimeout(() => {
       resetForm();
@@ -95,6 +96,7 @@ const submitForm = async () => {
     }, 2000);
   } catch (err) {
     // Error is already handled in the store
+    success.value = false;
   }
 };
 </script>
